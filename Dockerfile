@@ -17,11 +17,13 @@ RUN  apt-get update \
 # Setup IB TWS
 RUN mkdir -p /opt/TWS
 WORKDIR /opt/TWS
+# source https://download2.interactivebrokers.com/installers/ibgateway/stable-standalone/ibgateway-stable-standalone-linux-x64.sh
 RUN wget -q http://cdn.quantconnect.com/interactive/ibgateway-latest-standalone-linux-x64-v974.4g.sh
 COPY ./bin-repo/ibgateway-stable-standalone-linux-x64.sh ibgatewa-stable-standalone-linux-x64.sh
 RUN chmod a+x ibgateway-latest-standalone-linux-x64.sh
 
 # Setup  IBController
+#source https://github.com/IbcAlpha/IBC/releases
 RUN mkdir -p /opt/IBController/ && mkdir -p /root/IBController/Logs
 WORKDIR /opt/IBController/
 RUN wget -q http://cdn.quantconnect.com/interactive/IBController-QuantConnect-3.2.0.5.zip
